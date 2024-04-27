@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Scanner;
 
 public class Jatek {
 
@@ -23,15 +24,29 @@ public class Jatek {
     // Verseny metódus
     public void verseny() {
 
-        Random random = new Random();
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Fogadjon a nyertes csigára! Válassza ki a színt (piros/zöld/kék):");
+        String tipp = scanner.nextLine().toLowerCase();
+
+        if (tipp.equals("piros") || tipp.equals("zöld") || tipp.equals("kék")) {
+            System.out.println("Az Ön tippje: " + tipp);
+        } else {
+            System.out.println("Érvénytelen tipp! Az alapértelmezett tipp 'piros' lesz.");
+            tipp = "piros";
+        }
+
 
         // 5 kor van
         for (int kor = 1; kor <= 5; kor++) {
             System.out.println("Kör " + kor + ":");
 
             // Csiga kiválasztása, aki kap csigagyorsítót
+            Random random = new Random();
+            // 0-99 közötti véletlen szám - 100%
+            int esely = random.nextInt(100);
             // 20% eséllyel
-            if (random.nextInt(100) < 20) {
+            if (esely < 20) {
                 // 0-2 közötti véletlen index - 3 db csiga van
                 int index = random.nextInt(3);
                 Csiga kivalasztottCsiga = this.csigak[index];
@@ -49,30 +64,35 @@ public class Jatek {
 
             // Csiga lépése minden körben
             for (Csiga csiga : this.csigak) {
-                csiga.lep();
+                if (csiga.kapottCsigaGyorsitot()) {
+                    csiga.gyorsitottLep();
+                } else {
+                    csiga.lep();
+                }
+            }
+            System.out.println();
+
+            // Csiga állásának kiíratása
+            for (Csiga csiga : this.csigak) {
                 System.out.println(csiga);
             }
             System.out.println();
 
             // Nyertes kiválasztása
-            int maxTavolsag = 0;
-            String nyertes = "";
-            for (Csiga csiga : this.csigak) {
-                if (csiga.getTavolsag() > maxTavolsag) {
-                    maxTavolsag = csiga.getTavolsag();
-                    nyertes = csiga.getSzin();
+            Csiga nyertesCsiga = this.csigak[0];
+            for (int i = 1; i < this.csigak.length; i++) {
+                if (this.csigak[i].getTavolsag() > nyertesCsiga.getTavolsag()) {
+                    nyertesCsiga = this.csigak[i];
                 }
             }
 
-            System.out.println("A nyertes: " + nyertes);
+            System.out.println("A nyertes: " + nyertesCsiga.getSzin());
 
             // Fogadások ellenőrzése
-            for (String fogadas : this.fogadasok) {
-                if (fogadas.equals(nyertes)) {
-                    System.out.println("Gratulálunk, nyertél!");
-                } else {
-                    System.out.println("Sajnos nem nyertél.");
-                }
+            if (tipp.equals(nyertesCsiga.getSzin())) {
+                System.out.println("Gratulálunk, nyertél!");
+            } else {
+                System.out.println("Sajnos nem nyertél.");
             }
 
         }

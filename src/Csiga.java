@@ -72,7 +72,7 @@ public class Csiga {
         // 0-3 közötti véletlen lépés
         int lepes = random.nextInt(4);
         // Gyorsított lépés - duplazva
-        this.tavolsag += (lepes * 2) * this.sebesseg;
+        this.tavolsag += lepes * (2 * this.sebesseg);
     }
 
     // Csiga kap csigagyorsítót
