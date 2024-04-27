@@ -2,19 +2,28 @@ public class Main {
     public static void main(String[] args) {
 
         // Csiga objektumok létrehozása
-        Csiga pirosCsiga = new Csiga("piros");
-        Csiga zoldCsiga = new Csiga("zöld");
-        Csiga kekCsiga = new Csiga("kék");
+        //Csiga pirosCsiga = new Csiga("piros");
+        //Csiga zoldCsiga = new Csiga("zöld");
+        //Csiga kekCsiga = new Csiga("kék");
 
         // Csiga tulajdonságainak beállítása
         // Piros csiga sebessége 2
-        pirosCsiga.setSebesseg(2);
+        //pirosCsiga.setSebesseg(2);
         // Zöld csiga sebessége 1
-        zoldCsiga.setSebesseg(1);
+        //zoldCsiga.setSebesseg(1);
         // Kék csiga sebessége 3
-        kekCsiga.setSebesseg(3);
+        //kekCsiga.setSebesseg(3);
 
-        System.out.println(pirosCsiga.toString());
+        //System.out.println(pirosCsiga.toString());
+
+        Jatek ujJatek = new Jatek();
+
+        Csiga[] csigak = ujJatek.getCsigak();
+        for (Csiga csiga : csigak) {
+            System.out.println(csiga.toString());
+        }
+
+
 
 
 
