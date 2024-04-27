@@ -29,6 +29,10 @@ public class Csiga {
         return this.kapCsigaGyorsitot;
     }
 
+    public int getSebesseg() {
+        return this.sebesseg;
+    }
+
     // setter
     public void setTavolsag(int tavolsag) {
         this.tavolsag = tavolsag;

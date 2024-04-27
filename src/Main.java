@@ -23,9 +23,12 @@ public class Main {
             System.out.println(csiga.toString());
         }
 
+        for (Csiga csiga : csigak) {
+            if (csiga.getSzin().equals("piros")) {
+                System.out.println(csiga.getSebesseg());
+            }
+            }
 
 
-
-
-    }
+        }
 }
