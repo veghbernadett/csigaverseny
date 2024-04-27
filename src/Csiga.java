@@ -12,25 +12,26 @@ public class Csiga {
         this.tavolsag = 0;
         this.szin = szin;
         this.kapCsigaGyorsitot = false;
+        // Alapertelmezetten 1
         this.sebesseg = 1;
     }
 
     // Getter és setter metódusok
     // Getter
     public int getTavolsag() {
-        return this.tavolsag;
+        return tavolsag;
     }
 
     public String getSzin() {
-        return this.szin;
+        return szin;
     }
 
     public boolean kapottCsigaGyorsitot() {
-        return this.kapCsigaGyorsitot;
+        return kapCsigaGyorsitot;
     }
 
     public int getSebesseg() {
-        return this.sebesseg;
+        return sebesseg;
     }
 
     // setter
@@ -70,8 +71,8 @@ public class Csiga {
         Random random = new Random();
         // 0-3 közötti véletlen lépés
         int lepes = random.nextInt(4);
-        // Gyorsított lépés
-        this.tavolsag += lepes * (this.sebesseg * 2);
+        // Gyorsított lépés - duplazva
+        this.tavolsag += (lepes * 2) * this.sebesseg;
     }
 
     // Csiga kap csigagyorsítót

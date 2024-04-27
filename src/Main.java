@@ -16,18 +16,38 @@ public class Main {
 
         //System.out.println(pirosCsiga.toString());
 
-        Jatek ujJatek = new Jatek();
+        //Jatek ujJatek = new Jatek();
 
-        Csiga[] csigak = ujJatek.getCsigak();
-        for (Csiga csiga : csigak) {
-            System.out.println(csiga.toString());
-        }
+        //Csiga[] csigak = ujJatek.getCsigak();
+        //for (Csiga csiga : csigak) {
+        //    System.out.println(csiga.toString());
+        //}
 
-        for (Csiga csiga : csigak) {
-            if (csiga.getSzin().equals("piros")) {
-                System.out.println(csiga.getSebesseg());
-            }
-            }
+       // for (Csiga csiga : csigak) {
+        //    if (csiga.getSzin().equals("piros")) {
+        //        System.out.println(csiga.getSebesseg());
+        //    }
+        //    }
+
+        // Játék létrehozása
+        Jatek jatek = new Jatek();
+
+        // Játék elindítása
+        jatek.verseny();
+
+        // Csiga objektumok visszakérése a Játékból
+        Csiga[] csigak = jatek.getCsigak();
+
+        // Csiga objektumok tulajdonságainak kiíratása
+        //for (Csiga csiga : csigak) {
+        //    System.out.println(csiga.toString());
+        //}
+        //for (int i = 0; i < csigak.length; i++) {
+        //    System.out.println("Csiga színe: " + csigak[i].getSzin());
+        //    System.out.println("Csiga távolsága: " + csigak[i].getTavolsag());
+        //    System.out.println("Kapott csigagyorsító: " + csigak[i].kapottCsigaGyorsitot());
+        //    System.out.println();
+        //}
 
 
         }
