@@ -26,20 +26,33 @@ public class Jatek {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Fogadjon a nyertes csigára! Válassza ki a színt (piros/zöld/kék):");
-        String tipp = scanner.nextLine().toLowerCase();
+        System.out.println("Fogadjon a nyertes csigára! Válassza ki a színt (piros/zöld/kék)");
+        //System.out.println("Fogadjon a nyertes csigára! Válassza ki a színt (piros/zöld/kék):");
+        //String tipp = scanner.nextLine().toLowerCase();
 
-        if (tipp.equals("piros") || tipp.equals("zöld") || tipp.equals("kék")) {
-            System.out.println("Az Ön tippje: " + tipp);
-        } else {
-            System.out.println("Érvénytelen tipp! Az alapértelmezett tipp 'piros' lesz.");
-            tipp = "piros";
+        //if (tipp.equals("piros") || tipp.equals("zöld") || tipp.equals("kék")) {
+        //    System.out.println("Az Ön tippje: " + tipp);
+        //} else {
+        //    System.out.println("Érvénytelen tipp! Az alapértelmezett tipp 'piros' lesz.");
+        //    tipp = "piros";
+        //}
+
+        // Kezdeti állapot kiírása
+        System.out.println("Kezdeti állapot:");
+        for (Csiga csiga : this.csigak) {
+            System.out.println(csiga);
         }
+        System.out.println();
 
 
         // 5 kor van
         for (int kor = 1; kor <= 5; kor++) {
             System.out.println("Kör " + kor + ":");
+
+            // Tippelés
+            System.out.println("Fogadjon a következő körre! Válassza ki a színt (piros/zöld/kék):");
+            String tipp = scanner.nextLine().toLowerCase();
+            System.out.println("Az Ön tippje a következő körre: " + tipp);
 
             // Csiga kiválasztása, aki kap csigagyorsítót
             Random random = new Random();
