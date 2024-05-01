@@ -26,16 +26,16 @@ public class Jatek {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Fogadjon a nyertes csigára! Válassza ki a színt (piros/zöld/kék)");
-        //System.out.println("Fogadjon a nyertes csigára! Válassza ki a színt (piros/zöld/kék):");
-        //String tipp = scanner.nextLine().toLowerCase();
+        // Tippelés
+        System.out.println("Fogadjon a nyertes csigára! Válassza ki a színt (piros/zöld/kék):");
+        String tipp = scanner.nextLine().toLowerCase();
 
-        //if (tipp.equals("piros") || tipp.equals("zöld") || tipp.equals("kék")) {
-        //    System.out.println("Az Ön tippje: " + tipp);
-        //} else {
-        //    System.out.println("Érvénytelen tipp! Az alapértelmezett tipp 'piros' lesz.");
-        //    tipp = "piros";
-        //}
+        if (tipp.equals("piros") || tipp.equals("zöld") || tipp.equals("kék")) {
+            System.out.println("Az Ön tippje: " + tipp);
+        } else {
+            System.out.println("Érvénytelen tipp! Az alapértelmezett tipp 'piros' lesz.");
+            tipp = "piros";
+        }
 
         // Kezdeti állapot kiírása
         System.out.println("Kezdeti állapot:");
@@ -49,11 +49,6 @@ public class Jatek {
         for (int kor = 1; kor <= 5; kor++) {
             System.out.println("Kör " + kor + ":");
 
-            // Tippelés
-            System.out.println("Fogadjon a következő körre! Válassza ki a színt (piros/zöld/kék):");
-            String tipp = scanner.nextLine().toLowerCase();
-            System.out.println("Az Ön tippje a következő körre: " + tipp);
-
             // Csiga kiválasztása, aki kap csigagyorsítót
             Random random = new Random();
             // 0-99 közötti véletlen szám - 100%
@@ -63,25 +58,13 @@ public class Jatek {
                 // 0-2 közötti véletlen index - 3 db csiga van
                 int index = random.nextInt(3);
                 Csiga kivalasztottCsiga = this.csigak[index];
-                kivalasztottCsiga.gyorsit();
+                kivalasztottCsiga.setKapCsigaGyorsitot(true);
                 System.out.println("Csigagyorsító kapott: " + kivalasztottCsiga.getSzin());
             }
 
-            // Csiga sebességének beállítása
-            for (Csiga csiga : this.csigak) {
-                if (csiga.kapottCsigaGyorsitot()) {
-                    csiga.setSebesseg(csiga.getSebesseg() * 2); // Duplázás
-                }
-            }
-
-
             // Csiga lépése minden körben
             for (Csiga csiga : this.csigak) {
-                if (csiga.kapottCsigaGyorsitot()) {
-                    csiga.gyorsitottLep();
-                } else {
-                    csiga.lep();
-                }
+                csiga.lep();
             }
             System.out.println();
 
@@ -89,8 +72,12 @@ public class Jatek {
             for (Csiga csiga : this.csigak) {
                 System.out.println(csiga);
             }
+            // visszaállitás
+            for (Csiga csiga : this.csigak) {
+                csiga.mindenErtekAlapra();
+            }
             System.out.println();
-
+        }
             // Nyertes kiválasztása
             Csiga nyertesCsiga = this.csigak[0];
             for (int i = 1; i < this.csigak.length; i++) {
@@ -108,7 +95,6 @@ public class Jatek {
                 System.out.println("Sajnos nem nyertél.");
             }
 
-        }
-        }
+    }
 
 }

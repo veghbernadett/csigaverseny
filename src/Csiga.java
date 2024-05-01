@@ -44,6 +44,7 @@ public class Csiga {
     }
 
     public void setKapCsigaGyorsitot(boolean kapCsigaGyorsitot) {
+
         this.kapCsigaGyorsitot = kapCsigaGyorsitot;
     }
 
@@ -59,6 +60,10 @@ public class Csiga {
 
     // Csiga lépése
     public void lep() {
+        if (this.kapCsigaGyorsitot) {
+            this.sebesseg = 2;
+        }
+
         Random random = new Random();
         // 0-3 közötti véletlen lépés
         int lepes = random.nextInt(4);
@@ -66,17 +71,8 @@ public class Csiga {
         this.tavolsag += lepes * this.sebesseg;
     }
 
-    // Csiga gyorsitott lépése
-    public void gyorsitottLep() {
-        Random random = new Random();
-        // 0-3 közötti véletlen lépés
-        int lepes = random.nextInt(4);
-        // Gyorsított lépés - duplazva
-        this.tavolsag += lepes * (2 * this.sebesseg);
-    }
-
-    // Csiga kap csigagyorsítót
-    public void gyorsit() {
-        this.kapCsigaGyorsitot = true;
+    public void mindenErtekAlapra() {
+        this.sebesseg = 1;
+        this.kapCsigaGyorsitot = false;
     }
 }
